@@ -2,26 +2,38 @@
 
 namespace Laraketai\Mobizon;
 
+use Mobizon\MobizonApi;
 use Illuminate\Notifications\Notification;
 use Laraketai\Mobizon\Exceptions\CouldNotSendNotification;
 
-class MobizonChannel
+class MobizonChanel
 {
-    /** @var \Laraketai\Mobizon\MobizonApi */
-    protected $mobizonsms;
+    /**
+     * @var MobizonApi $mobizonApi
+     */
+    protected $mobizonApi;
+    protected $config;
 
-    public function __construct(MobizonApi $mobizonsms)
+    /**
+     * MobizonChanel constructor.
+     *
+     * @param MobizonApi $mobizonApi
+     */
+    public function __construct(MobizonApi $mobizonApi)
     {
-        $this->mobizonsms = $mobizonsms;
+        $this->mobizonApi = $mobizonApi;
+        $this->config = config('mobizon');
     }
+
 
     /**
      * Send the given notification.
      *
-     * @param  mixed  $notifiable
-     * @param  \Illuminate\Notifications\Notification  $notification
-     *
-     * @throws  \NotificationChannels\SmscRu\Exceptions\CouldNotSendNotification
+     * @param $notifiable
+     * @param Notification $notification
+     * @throws CouldNotSendNotification
+     * @throws \Mobizon\Mobizon_Http_Error
+     * @throws \Mobizon\Mobizon_Param_Required
      */
     public function send($notifiable, Notification $notification)
     {
@@ -37,9 +49,18 @@ class MobizonChannel
             $message = new MobizonMessage($message);
         }
 
+        $message->alphaname($this->config['alphaname']);
+
         $this->sendMessage($to, $message);
     }
 
+    /**
+     * @param $recipient
+     * @param MobizonMessage $message
+     * @throws CouldNotSendNotification
+     * @throws \Mobizon\Mobizon_Http_Error
+     * @throws \Mobizon\Mobizon_Param_Required
+     */
     protected function sendMessage($recipient, MobizonMessage $message)
     {
         if (mb_strlen($message->content) > 800) {
@@ -48,14 +69,14 @@ class MobizonChannel
 
         $params = [
             'recipient' => $recipient,
-            'message'   => $message->content,
-            'from'      => $message->alphaname,
+            'text' => $message->content,
+            //'from' => $message->alphaname, //Optional
         ];
 
-        if ($message->sendAt instanceof \DateTimeInterface) {
-            $params['time'] = '0'.$message->sendAt->getTimestamp();
+        if(!$this->mobizonApi->call('message', 'sendSMSMessage', $params)){
+            throw CouldNotSendNotification::mobizonRespondedWithAnError($this->mobizonApi->getCode(),$this->mobizonApi->getMessage(),$this->mobizonApi->getData());
         }
-
-        $this->mobizonsms->send($params);
     }
+
+
 }
