@@ -30,7 +30,7 @@
             "Laraketai\\Mobizon\\": "src"
         }
     },
-    "minimum-stability": "^0.1",
+    "minimum-stability": "dev",
     "autoload-dev": {
         "psr-4": {
             "Laraketai\\Mobizon\\Test\\": "tests"
