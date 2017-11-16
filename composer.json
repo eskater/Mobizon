@@ -3,6 +3,8 @@
     "description": "Mobizon Notifications channel for Laravel 5.3.",
     "keywords": ["laravel", "notifications", "mobizon", "mobizon.kz"],
     "homepage": "https://github.com/laraketai/mobizon",
+    "minimum-stability": "dev",
+    "version":"0.0.1",
     "license": "MIT",
     "authors": [
         {
@@ -30,7 +32,6 @@
             "Laraketai\\Mobizon\\": "src"
         }
     },
-    "minimum-stability": "dev",
     "autoload-dev": {
         "psr-4": {
             "Laraketai\\Mobizon\\Test\\": "tests"
