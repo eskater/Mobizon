@@ -1,0 +1,50 @@
+{
+    "name": "laraketai/mobizon",
+    "description": "Mobizon Notifications channel for Laravel 5.3.",
+    "keywords": ["laravel", "notifications", "mobizon", "mobizon.kz"],
+    "homepage": "https://github.com/laraketai/mobizon",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aketai",
+            "role": "Developer",
+            "email": "sanzhar@aketai.com",
+            "homepage": "https://github.com/laraketai"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.4",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^6.2",
+        "illuminate/queue": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*",
+        "illuminate/notifications": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*",
+        "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.2",
+        "mockery/mockery": "^0.9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Laraketai\\Mobizon\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Laraketai\\Mobizon\\Test\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Laraketai\\Mobizon\\MobizonServiceProvider"
+            ]
+        }
+    }
+}
