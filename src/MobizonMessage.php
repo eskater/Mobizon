@@ -72,18 +72,4 @@ class MobizonMessage
         return $this;
     }
 
-
-    /**
-     * Set the time the message should be sent.
-     *
-     * @param  \DateTimeInterface|null  $sendAt
-     *
-     * @return $this
-     */
-    public function sendAt(\DateTimeInterface $sendAt = null)
-    {
-        $this->sendAt = $sendAt;
-
-        return $this;
-    }
 }
