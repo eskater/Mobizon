@@ -30,13 +30,13 @@ Then you must install the service provider:
 // config/app.php
 'providers' => [
     ...
-    NotificationChannels\SmscRu\SmscRuServiceProvider::class,
+    Laraketai\Mobizon\MobizonServiceProvider::class,
 ],
 ```
 
 ### Setting up the Mobizon service
 
-Add your SmscRu login, secret key (hashed password) and default sender name (or phone number) to your `config/mobizon.php`:
+Add your secret key (Your secret API key) and alphaname to your `config/mobizon.php`:
 
 ```php
 // config/services.php
@@ -72,7 +72,7 @@ class AccountApproved extends Notification
 }
 ```
 
-In your notifiable model, make sure to include a routeNotificationForSmscru() method, which return the phone number.
+In your notifiable model, make sure to include a routeNotificationForMobizon() method, which return the phone number.
 
 ```php
 public function routeNotificationForMobizon()
