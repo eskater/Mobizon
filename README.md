@@ -6,7 +6,7 @@ This package makes it easy to send notifications using [mobizon.kz](//mobizon.kz
 ## Contents
 
 - [Installation](#installation)
-    - [Setting up the SmscRu service](#setting-up-the-SmscRu-service)
+    - [Setting up the Mobizon service](#setting-up-the-Mobizon-service)
 - [Usage](#usage)
     - [Available Message methods](#available-message-methods)
 - [Changelog](#changelog)
