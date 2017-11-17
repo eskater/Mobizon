@@ -34,6 +34,12 @@ Then you must install the service provider:
 ],
 ```
 
+Publish the configs:
+```bash
+php artisan vendor:publish --provider="Laraketai\Mobizon\MobizonServiceProvider"
+```
+
+
 ### Setting up the Mobizon service
 
 Add your secret key (Your secret API key) and alphaname to your `config/mobizon.php`:
