@@ -83,8 +83,6 @@ public function routeNotificationForMobizon()
 
 ### Available methods
 
-`from()`: Sets the sender's name or phone number.
-
 `content()`: Set a content of the notification message.
 
 
