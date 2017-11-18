@@ -73,7 +73,7 @@ class AccountApproved extends Notification
 
     public function toMobizon($notifiable)
     {
-        return MobizonMessage::creae("Task #{$notifiable->id} is complete!");
+        return MobizonMessage::create("Task #{$notifiable->id} is complete!");
     }
 }
 ```
