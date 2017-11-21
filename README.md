@@ -22,7 +22,7 @@ This package makes it easy to send notifications using [mobizon.kz](//mobizon.kz
 You can install the package via composer:
 
 ```bash
-composer require laraketai/mobizon:dev-master
+composer require laraketai/mobizon
 ```
 
 Then you must install the service provider:
@@ -117,4 +117,4 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The MIT License (MIT). 
