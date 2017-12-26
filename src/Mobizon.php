@@ -38,7 +38,7 @@ class Mobizon
     public function sendSmsTo($recipient, $text, $alphaname)
     {
 
-        if (empty($to)) {
+        if (empty($recipient)) {
             throw CouldNotSendNotification::missingRecipient();
         }
 
@@ -53,7 +53,7 @@ class Mobizon
         ];
 
         if (!$this->api->call('message', 'sendSMSMessage', $params)) {
-            throw CouldNotSendNotification::mobizonRespondedWithAnError($this->api->getCode(), $this->api->getMessage(), $this->api->getData());
+            throw new \Exception($this->api->getMessage(), $this->api->getCode());
         }
         return true;
     }
